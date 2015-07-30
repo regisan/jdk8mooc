@@ -5,6 +5,8 @@
  */
 package lesson1;
 
+import static java.util.stream.Collectors.joining;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,9 +51,15 @@ public class Lesson1 {
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
 
     /* YOUR CODE HERE */
-    StringBuilder result = new StringBuilder();
-    list.forEach(s -> result.append(s.charAt(0)));
-    System.out.println(result.toString());
+//    StringBuilder result = new StringBuilder();
+//    list.forEach(s -> result.append(s.charAt(0)));
+//    System.out.println(result.toString());
+    
+    // evitando forEach
+    String result = list.stream()
+    		.map(s -> s.substring(0,1))
+    		.collect(joining());
+    System.out.println(result);
   }
 
   /**
@@ -95,8 +103,13 @@ public class Lesson1 {
     map.put("a", 1);
 
     /* YOUR CODE HERE */
-    StringBuilder result = new StringBuilder();
-    map.forEach((k, v) -> result.append(k).append(v));
+//    StringBuilder result = new StringBuilder();
+//    map.forEach((k, v) -> result.append(k).append(v));
+    
+    // evitando forEach
+    String result = map.keySet().stream()
+    		.map(k -> k + map.get(k))
+    		.collect(joining());
     System.out.println(result);
   }
 
@@ -109,6 +122,7 @@ public class Lesson1 {
     List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
     /* YOUR CODE HERE */
+    // aqui tudo bem em usar o forEach
     new Thread(() -> list.forEach(System.out::println)).start();
   }
 

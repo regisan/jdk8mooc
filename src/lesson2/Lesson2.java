@@ -10,12 +10,14 @@ import static java.util.stream.Collectors.joining;
 
 
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -97,8 +99,7 @@ public class Lesson2 {
     String result = list.stream()
     		.skip(1)
     		.limit(3)
-    		.collect(joining("-"))
-    		.toString();
+    		.collect(joining("-"));
     
     System.out.println(result);
   }
@@ -165,7 +166,7 @@ public class Lesson2 {
     			.flatMap(line -> Stream.of(line.split(WORD_REGEXP)))
     			.map(String::toLowerCase)
     			.distinct()
-    			.sorted((x, y) -> Integer.compare(x.length(), y.length()))
+    			.sorted(Comparator.comparingInt(String::length))
     			.collect(toList());
     	
     	System.out.println(result);
