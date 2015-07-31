@@ -42,7 +42,7 @@ public class Levenshtein {
    * @return the Levenshtein distance between the two strings
    * @throws NullPointerException if either string is null
    */
-  static int lev(String stringA, String stringB) {
+  public static int lev(String stringA, String stringB) {
     Objects.requireNonNull(stringA);
     Objects.requireNonNull(stringB);
 
